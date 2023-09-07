@@ -49,7 +49,7 @@ def admin_mode():
         ' FROM car'
         ' ORDER BY name ASC'
     ).fetchall()
-    return render_template('car/index.html', cars=cars)
+    return render_template('car/all.html', cars=cars)
 
 
 ## Admin can create new car entry ##
@@ -91,7 +91,7 @@ def create():
             db.commit()
             return redirect(url_for('car.index'))
 
-    return render_template('admin/create.html')
+    return render_template('car/create.html')
 
 # Getting a car associated with a given id to update it
 def get_car(id, check_author=True):
@@ -147,7 +147,7 @@ def update(id):
             )
             db.commit()
             return redirect(url_for('car.index'))
-    return render_template('admin/update.html', car=car)
+    return render_template('car/update.html', car=car)
 
 # Deletes the car with a given id
 @bp.route('/<int:id>/delete', methods=('POST',))
