@@ -15,7 +15,7 @@
           <div class="user-input-box">
             <label for="vehicle_type">Available Cars</label>
             <select id="vehicle_type" name="car_id">{% for car in cars %}
-		    <option value={{car.id}},{{car.name}},{{car.model}},{{car.status}},{{car.seat}},{{car.door}},{{car.gearbox}} >{{car.id}} | {{car.name}} | {{car.model}} | {{car.status}} | {{car.seat}} | {{car.door}} | {{car.gearbox}} car name</option>
+		    <option value={{car.id}},{{car.name}},{{car.model}},{{car.status}},{{car.seat}},{{car.door}},{{car.gearbox}} >{{car.name}} | {{car.seat}} Seats | {{car.door}} Doors | {{car.gearbox}} Transmission</option>
               {% endfor %}
 
               <!-- Add more options as needed -->
