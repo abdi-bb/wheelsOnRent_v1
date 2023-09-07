@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!--=============== CUSTOM CSS ===============-->
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+	<!--=============== HTMX LIB ===============-->
+	<script src="https://unpkg.com/htmx.org@1.9.5/dist/htmx.min.js"></script>
+
+        <!--=============== FAVICON ===============-->
+        <link rel="shortcut icon" href="{{ url_for('static', filename='assets/img/favicon.png') }}" type="image/x-icon">
+
+        <!--=============== REMIX ICONS ===============-->
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+        <!--=============== SWIPER CSS ===============-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/swiper-bundle.min.css') }}">
+
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/styles.css') }}">
+        
+        <title>{% block title %}{% endblock %} - WheelsOnRent</title>
+    </head>
+
+
+
+        <!--==================== HEADER ====================-->
+        <div class="header" id="header">
+            <nav class="nav container">
+                <a href="#" class="nav_logo">
+                    <i class="ri-steering-line"></i>
+                    WheelsOnRent<br>your car rent solution
+                </a>
+
+                <div class="nav_menu" id="nav-menu">
+                    <ul class="nav_list">
+                        <li class="nav_item"><a href="{{url_for('booking.create')}}" class="nav_link active-link">Book Now</a></li>
+                        {% if g.customer %}
+			 <li><span>{{ g.customer['name'] }}</span>
+                        <li class="nav_item"><a href="{{ url_for('customer.logout') }}" class="nav_link">Log Out</a></li>
+                        {% else %}
+                        <li class="nav_item"><a href="{{url_for('customer.register')}}" class="nav_link">Register</a></li>
+			<li class="nav_item"><a href="{{url_for('customer.login')}}" class="nav_link">Log In</a></li>
+                        {% endif %}
+                    </ul>
+
+                    <div class="nav_close" id="nav-close">
+                        <i class="ri-close-line"></i>
+                    </div>
+                </div>
+
+                <!-- Toggle button -->
+                <div class="nav_toggle" id="nav-toggle">
+                    <i class="ri-menu-line"></i>
+                </div>
+            </nav>
+        </div>
+
+	<!--==================== HEADER AND CONTENT ====================-->
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>
+
+	 <!--==================== FOOTER ====================-->
+        <footer class="footer section">
+            <div class="shape shape_big"></div>
+            <div class="shape shape_small"></div>
+
+            <div class="footer_container container grid">
+                <div class="footer_content">
+                    <a href="#" class="footer_logo">
+                        <i class="ri-steering-line"></i> WheelsOnRent
+                    </a>
+                    <p class="footer_description">
+                        We offer the best electric cars of <br>
+                        the most recognized brands in <br>
+                        the world.
+                    </p>
+                </div>
+
+                <div class="footer_content">
+                    <h3 class="footer_title">
+                        Company
+                    </h3>
+
+                    <ul class="footer_links">
+                        <li>
+                            <a href="#" class="footer_link">About</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer_link">Cars</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer_link">History</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer_link">Shop</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer_content">
+                    <h3 class="footer_title">
+                        Information
+                    </h3>
+
+                    <ul class="footer_links">
+                        <li>
+                            <a href="#" class="footer_link">Request a quote</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer_link">Find a dealer</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer_link">Contact us</a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer_link">Services</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer_content">
+                    <h3 class="footer_title">
+                        Follow us
+                    </h3>
+
+                    <ul class="footer_social">
+                        <a href="https://www.facebook.com/" target="_blank" class="footer_social-link">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank" class="footer_social-link">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="https://www.twitter.com/" target="_blank" class="footer_social-link">
+                            <i class="ri-twitter-line"></i>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+
+            <span class="footer_copy">
+                &#169; 2023 WheelsOnRent
+            </span>
+        </footer>
+
+
+        <!--========== SCROLL UP ==========-->
+        <a href="#" class="scrollup" id="scroll-up">
+            <i class="ri-arrow-up-line"></i>
+        </a>
+
+        <!--=============== SCROLL REVEAL ===============-->
+        <script src="{{ url_for('static', filename='assets/js/scrollreveal.min.js') }}"></script>
+
+        <!--=============== SWIPER JS ===============-->
+        <script src="{{ url_for('static', filename='assets/js/swiper-bundle.min.js') }}"></script>
+
+        <!--=============== MIXITUP JS ===============-->
+        <script src="{{ url_for('static', filename='assets/js/mixitup.min.js') }}"></script>
+
+        <!--=============== MAIN JS ===============-->
+        <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>WheelsOnRent Booking Form</title>
+    <meta name="viewport" content="width=device-width,
+      initial-scale=1.0"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assetsss/style.css') }}" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="form-title">Booking</h1>
+      <form action="{{ url_for('booking.create') }}" method="post">
+        <div class="main-user-info">
+          <div class="user-input-box">
+            <label for="vehicle_type">Available Cars</label>
+            <select id="vehicle_type" name="car_id">{% for car in cars %}
+		    <option value={{car.id}},{{car.name}},{{car.model}},{{car.status}},{{car.seat}},{{car.door}},{{car.gearbox}} >{{car.id}} | {{car.name}} | {{car.model}} | {{car.status}} | {{car.seat}} | {{car.door}} | {{car.gearbox}} car name</option>
+              {% endfor %}
+
+              <!-- Add more options as needed -->
+          </select>
+          </div>
+
+          <div class="user-input-box">
+            <label for="start_date">Start Date</label>
+            <input type="date" id="start_date" name="start_date" placeholder="Enter Start Date"/>
+          </div>
+
+          <div class="user-input-box">
+            <label for="end_date">End Date</label>
+            <input type="date" id="end_date" name="end_date" placeholder="Enter End Date"/>
+          </div>
+        </div>
+
+        <div class="form-submit-btn">
+          <input type="submit" value="Book Now">
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
