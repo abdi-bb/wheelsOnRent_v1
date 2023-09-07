@@ -1,0 +1,432 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+        <!--==================== MAIN ====================-->
+        <main class="main">
+            <!--==================== HOME ====================-->
+            <section class="home section" id="home">
+                <div class="shape shape_big"></div>
+                <div class="shape shape_small"></div>
+                
+                <div class="home_container container grid">
+                    <div class="home_data">
+                        <h1 class="home_title">
+			    Move Wherever You Like!
+                        </h1>
+
+                        <h2 class="home_subtitle">
+                            Choose Your Favourite Car
+                        </h2>
+
+                        <h3 class="home_elec">
+			    <i class="ri-steering-line"></i> WheelsOnRent
+                        </h3>
+                    </div>
+
+                    <img src="{{ url_for('static', filename='assets/img/home.png') }}" alt="" class="home_img">
+
+                    <div class="home_car">
+                        <div class="home_car-data">
+                            <div class="home_car-icon">
+                                <i class="ri-temp-cold-line"></i>
+                            </div>
+                            <h2 class="home_car-number">24°</h2>
+                            <h3 class="home_car-name">TEMPERATURE</h3>
+                        </div>
+
+                        <div class="home_car-data">
+                            <div class="home_car-icon">
+                                <i class="ri-dashboard-3-line"></i>
+                            </div>
+                            <h2 class="home_car-number">873</h2>
+                            <h3 class="home_car-name">MILEAGE</h3>
+                        </div>
+
+                        <div class="home_car-data">
+                            <div class="home_car-icon">
+                                <i class="ri-flashlight-fill"></i>
+                            </div>
+                            <h2 class="home_car-number">94%</h2>
+                            <h3 class="home_car-name">BATTERY</h3>
+                        </div>
+                    </div>
+
+                    <a href="#" class="home_button">START</a>
+                </div>
+            </section>
+
+            <!--==================== ABOUT ====================-->
+            <section class="about section" id="about">
+                <div class="about_container container grid">
+                    <div class="about_group">
+                        <img src="{{ url_for('static', filename='assets/img/about.png') }}" alt="" class="about_img">
+
+                        <div class="about_card">
+                            <h3 class="about_card-title">2.500+</h3>
+                            <p class="about_card-description">
+                                Supercharges placed along popular routes
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="about_data">
+                        <h2 class="section_title about_title">
+                            Machines With <br> Future Technology
+                        </h2>
+
+                        <p class="about_description">
+                            See the future with high-performance electric cars produced by
+                            renowned brands. They feature futuristic builds and designs with
+                            new and innovative platforms that last a long time
+                        </p>
+
+                        <a href="#" class="button">Know more</a>
+                    </div>
+                </div>
+            </section>
+
+            <!--==================== POPULAR ====================-->
+            <section class="popular section" id="popular">
+                <h2 class="section__title">
+                    Choose Your Electric Car <br> Of The Porsche Brand
+                </h2>
+
+                <div class="popular_container container swiper">
+                    <div class="swiper-wrapper">{% for vehicle in vehicles %}
+                        <article class="popular_card swiper-slide">
+                            <div class="shape shape_smaller"></div>
+
+                            <h1 class="popular_title">{{vehicle.type}}</h1>
+                            <h3 class="popular_subtitle">{{vehicle.brand}}</h3>
+
+                            <img src="{{ url_for('static', filename='assets/img/popular1.png') }}" alt="" class="popular_img">
+
+                            <div class="popular_data">
+                                <div class="popular_data-group">
+                                    <i class="ri-team-line"></i>{{vehicle.capacity}} sets
+                                </div>
+                                <div class="popular_data-group">
+                                    <i class="ri-funds-box-line"></i> 356 Km/h
+                                </div>
+                                <div class="popular_data-group">
+                                    <i class="ri-charging-pile-2-line"></i> Electric
+                                </div>
+                            </div>
+
+                            <h3  class="popular_price">${{vehicle.price_per_day}} </h3>Per Day
+
+                            <a href="{{ url_for('booking') }}" class="button popular_button">
+                                BOOK
+                            </a>
+                        </article>{% endfor %}
+
+                        <article class="popular_card swiper-slide">
+                            <div class="shape shape_smaller"></div>
+
+                            <h1 class="popular_title">Porsche</h1>
+                            <h3 class="popular_subtitle">Taycan</h3>
+
+                            <img src="{{ url_for('static', filename='assets/img/popular2.png') }}" alt="" class="popular_img">
+
+                            <div class="popular_data">
+                                <div class="popular_data-group">
+                                    <i class="ri-dashboard-3-line"></i> 3.7 Sec
+                                </div>
+                                <div class="popular_data-group">
+                                    <i class="ri-funds-box-line"></i> 356 Km/h
+                                </div>
+                                <div class="popular_data-group">
+                                    <i class="ri-charging-pile-2-line"></i> Electric
+                                </div>
+                            </div>
+
+                            <h3  class="popular_price">$114,900</h3>
+
+                            <button class="button popular_button">
+                                <i class="ri-shopping-bag-2-line"></i>
+                            </button>
+                        </article>
+
+                        <article class="popular_card swiper-slide">
+                            <div class="shape shape_smaller"></div>
+
+                            <h1 class="popular_title">Porsche</h1>
+                            <h3 class="popular_subtitle">Turbo S Cross</h3>
+
+                            <img src="{{ url_for('static', filename='assets/img/popular3.png') }}" alt="" class="popular_img">
+
+                            <div class="popular_data">
+                                <div class="popular_data-group">
+                                    <i class="ri-dashboard-3-line"></i> 3.7 Sec
+                                </div>
+                                <div class="popular_data-group">
+                                    <i class="ri-funds-box-line"></i> 356 Km/h
+                                </div>
+                                <div class="popular_data-group">
+                                    <i class="ri-charging-pile-2-line"></i> Electric
+                                </div>
+                            </div>
+
+                            <h3  class="popular_price">$150,900</h3>
+
+                            <button class="button popular_button">
+                                <i class="ri-shopping-bag-2-line"></i>
+                            </button>
+                        </article>
+
+                        <article class="popular_card swiper-slide">
+                            <div class="shape shape_smaller"></div>
+
+                            <h1 class="popular_title">Porsche</h1>
+                            <h3 class="popular_subtitle">Boxster 718</h3>
+
+                            <img src="{{ url_for('static', filename='assets/img/popular4.png') }}" alt="" class="popular_img">
+
+                            <div class="popular_data">
+                                <div class="popular_data-group">
+                                    <i class="ri-dashboard-3-line"></i> 3.7 Sec
+                                </div>
+                                <div class="popular_data-group">
+                                    <i class="ri-funds-box-line"></i> 356 Km/h
+                                </div>
+                                <div class="popular_data-group">
+                                    <i class="ri-charging-pile-2-line"></i> Electric
+                                </div>
+                            </div>
+                            
+                            <h3  class="popular_price">$125,900</h3>
+
+                            <button class="button popular_button">
+                                <i class="ri-shopping-bag-2-line"></i>
+                            </button>
+                        </article>
+
+                        <article class="popular_card swiper-slide">
+                            <div class="shape shape_smaller"></div>
+
+                            <h1 class="popular_title">Porsche</h1>
+                            <h3 class="popular_subtitle">cayman</h3>
+
+                            <img src="{{ url_for('static', filename='assets/img/popular5.png') }}" alt="" class="popular_img">
+
+                            <div class="popular_data">
+                                <div class="popular_data-group">
+                                    <i class="ri-dashboard-3-line"></i> 3.7 Sec
+                                </div>
+                                <div class="popular_data-group">
+                                    <i class="ri-funds-box-line"></i> 356 Km/h
+                                </div>
+                                <div class="popular_data-group">
+                                    <i class="ri-charging-pile-2-line"></i> Electric
+                                </div>
+                            </div>
+
+                            <h3  class="popular_price">$128,900</h3>
+
+                            <button class="button popular_button">
+                                <i class="ri-shopping-bag-2-line"></i>
+                            </button>
+                        </article>
+                    </div>
+
+                    <div class="swiper-pagination"></div>
+                </div>
+            </section>
+
+            <!--==================== FEATURES ====================-->
+            <section class="features section">
+                <h2 class="section__title">
+                    More Features
+                </h2>
+
+                <div class="features_container container grid">
+                    <div class="features_group">
+                        <img src="{{ url_for('static', filename='assets/img/features.png') }}" alt="" class="features_img">
+
+                        <div class="features_card features_card-1">
+                            <h3 class="features_card-title">800v</h3>
+                            <p class="features_card-description">Turbo <br> Chargin</p></p>
+                        </div>
+
+                        <div class="features_card features_card-2">
+                            <h3 class="features_card-title">350</h3>
+                            <p class="features_card-description">Km <br> Range</p>
+                        </div>
+
+                        <div class="features_card features_card-3">
+                            <h3 class="features_card-title">480</h3>
+                            <p class="features_card-description">Km <br> Travel</p>
+                        </div>
+                    </div>
+                </div>
+
+                <img src="{{ url_for('static', filename='assets/img/map.svg') }}" alt="" class="features_map">
+            </section>
+
+            <!--==================== FEATURED ====================-->
+            <section class="featured section" id="featured">
+                <h2 class="section__title">
+                    Featured Luxury Cars
+                </h2>
+
+                <div class="featured_container container">
+                    <ul class="featured_filters">
+                        <li>
+                            <button class="featured_item active-featured" data-filter="all">
+                                <span>All</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="featured_item" data-filter=".tesla">
+                                <img src="{{ url_for('static', filename='assets/img/logo3.png') }}" alt="">
+                            </button>
+                        </li>
+                        <li>
+                            <button class="featured_item" data-filter=".audi">
+                                <img src="{{ url_for('static', filename='assets/img/logo2.png') }}" alt="">
+                            </button>
+                        </li>
+                        <li>
+                            <button class="featured_item" data-filter=".porsche">
+                                <img src="{{ url_for('static', filename='assets/img/logo1.png') }}" alt="">
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="featured_content grid">
+                        <article class="featured_card mix tesla">
+                            <div class="shape shape_smaller"></div>
+
+                            <h1 class="featured_title">Tesla</h1>
+
+                            <h3 class="featured_subtitle">Model X</h3>
+
+                            <img src="{{ url_for('static', filename='assets/img/featured1.png') }}" alt="" class="featured_img">
+
+                            <h3 class="featured_price">$98,900</h3>
+
+                            <button class="button featured_button">
+                                <i class="ri-shopping-bag-2-line"></i>
+                            </button>
+                        </article>
+
+                        <article class="featured_card mix tesla">
+                            <div class="shape shape_smaller"></div>
+
+                            <h1 class="featured_title">Tesla</h1>
+
+                            <h3 class="featured_subtitle">Model 3</h3>
+
+                            <img src="{{ url_for('static', filename='assets/img/featured2.png') }}" alt="" class="featured_img">
+
+                            <h3 class="featured_price">$45,900</h3>
+
+                            <button class="button featured_button">
+                                <i class="ri-shopping-bag-2-line"></i>
+                            </button>
+                        </article>
+
+                        <article class="featured_card mix audi">
+                            <div class="shape shape_smaller"></div>
+
+                            <h1 class="featured_title">Audi</h1>
+
+                            <h3 class="featured_subtitle">E-tron</h3>
+
+                            <img src="{{ url_for('static', filename='assets/img/featured3.png') }}" alt="" class="featured_img">
+
+                            <h3 class="featured_price">$175,900</h3>
+
+                            <button class="button featured_button">
+                                <i class="ri-shopping-bag-2-line"></i>
+                            </button>
+                        </article>
+
+                        <article class="featured_card mix porsche">
+                            <div class="shape shape_smaller"></div>
+
+                            <h1 class="featured_title">Porsche</h1>
+
+                            <h3 class="featured_subtitle">Boxster 987</h3>
+
+                            <img src="{{ url_for('static', filename='assets/img/featured4.png') }}" alt="" class="featured_img">
+
+                            <h3 class="featured_price">$126,900</h3>
+
+                            <button class="button featured_button">
+                                <i class="ri-shopping-bag-2-line"></i>
+                            </button>
+                        </article>
+
+                        <article class="featured_card mix porsche">
+                            <div class="shape shape_smaller"></div>
+
+                            <h1 class="featured_title">Porsche</h1>
+
+                            <h3 class="featured_subtitle">panamera</h3>
+
+                            <img src="{{ url_for('static', filename='assets/img/featured5.png') }}" alt="" class="featured_img">
+
+                            <h3 class="featured_price">$126,900</h3>
+
+                            <button class="button featured_button">
+                                <i class="ri-shopping-bag-2-line"></i>
+                            </button>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!--==================== OFFER ====================-->
+            <section class="offer section">
+                <div class="offer_container container grid">
+                    <img src="{{ url_for('static', filename='assets/img/offer-bg.png') }}" alt="" class="offer_bg">
+
+                    <div class="offer_data">
+                        <h2 class="section__title offer_title">
+                            Do You Want To Receive <br> Special Offers?
+                        </h2>
+
+                        <p class="offer_description">
+                            Be the first to receive all the information abut our
+                            products and new cars by email subscribing to our
+                            mailing list.
+                        </p>
+
+                        <a href="#" class="button">
+                            Subscribe Now
+                        </a>
+                    </div>
+
+                    <img src="{{ url_for('static', filename='assets/img/offer.png') }}" alt="" class="offer_img">
+                </div>
+            </section>
+
+            <!--==================== LOGOS ====================-->
+            <section class="logos section">
+                <div class="logos_container container grid">
+                    <div class="logos_content">
+                        <img src="{{ url_for('static', filename='assets/img/logo1.png') }}" alt="" class="logos_img">
+                    </div>
+                    <div class="logos_content">
+                        <img src="{{ url_for('static', filename='assets/img/logo2.png') }}" alt="" class="logos_img">
+                    </div>
+                    <div class="logos_content">
+                        <img src="{{ url_for('static', filename='assets/img/logo3.png') }}" alt="" class="logos_img">
+                    </div>
+                    <div class="logos_content">
+                        <img src="{{ url_for('static', filename='assets/img/logo4.png') }}" alt="" class="logos_img">
+                    </div>
+                    <div class="logos_content">
+                        <img src="{{ url_for('static', filename='assets/img/logo5.png') }}" alt="" class="logos_img">
+                    </div>
+                    <div class="logos_content">
+                        <img src="{{ url_for('static', filename='assets/img/logo6.png') }}" alt="" class="logos_img">
+                    </div>
+                </div>
+            </section>
+        </main>
+
+{% endblock %}

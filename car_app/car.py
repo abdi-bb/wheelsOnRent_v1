@@ -9,18 +9,23 @@ from car_app.db import get_db
 
 bp = Blueprint('car', __name__)
 
+# Home page
+@bp.route('/')
+#@login_required
+def index():
+    return render_template('home.html')
 
 # Car list
 @bp.route('/')
 @login_required
-def index():
+def list():
     db = get_db()
     cars = db.execute(
         'SELECT id, name, seat, gearbox, image, model'
         ' FROM car'
         ' ORDER BY name ASC'
     ).fetchall()
-    return render_template('admin/car_index.html', cars=cars)
+    return render_template('car/index.html', cars=cars)
 
 # Guest mode page, Customer can see without logging in if he wish
 @bp.route('/guest_mode')
@@ -32,7 +37,7 @@ def guest_mode():
         ' WHERE status = 1'
         ' ORDER BY name ASC'
     ).fetchall()
-    return render_template('car_index.html', cars=cars)
+    return render_template('car/index.html', cars=cars)
 
 # Admin mode page, Admin can see all cars(booked and avalable)
 @bp.route('/admin_mode')
@@ -44,7 +49,7 @@ def admin_mode():
         ' FROM car'
         ' ORDER BY name ASC'
     ).fetchall()
-    return render_template('car_all.html', cars=cars)
+    return render_template('car/index.html', cars=cars)
 
 
 ## Admin can create new car entry ##
@@ -86,7 +91,7 @@ def create():
             db.commit()
             return redirect(url_for('car.index'))
 
-    return render_template('admin/car_create.html')
+    return render_template('admin/create.html')
 
 # Getting a car associated with a given id to update it
 def get_car(id, check_author=True):
@@ -142,7 +147,7 @@ def update(id):
             )
             db.commit()
             return redirect(url_for('car.index'))
-    return render_template('admin/car_update.html', car=car)
+    return render_template('admin/update.html', car=car)
 
 # Deletes the car with a given id
 @bp.route('/<int:id>/delete', methods=('POST',))

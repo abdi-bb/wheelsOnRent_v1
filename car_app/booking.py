@@ -21,7 +21,7 @@ def index():
         ' JOIN car ca on b.car_id = ca.id'
         ' ORDER BY start_date ASC'
     ).fetchall()
-    return render_template('admin/booking_index.html', boookings=boookings)
+    return render_template('booking/index.html', boookings=boookings)
 
 # The logged in user can make new booking
 @bp.route('/create', methods=('GET', 'POST'))
@@ -58,7 +58,7 @@ def create():
         ' WHERE status = 1'
         ).fetchall()
 
-    return render_template('booking_create.html', cars=cars)
+    return render_template('booking/create.html', cars=cars)
 
 # Getting booking with the same booking id
 def get_booking(id, check_author=True):
@@ -107,7 +107,7 @@ def update(id):
             db.commit()
             return redirect(url_for('booking.index'))
 
-    return render_template('booking_update.html', booking=booking)
+    return render_template('booking/update.html', booking=booking)
 
 @bp.route('/<int:id>/delete', methods=('POST',))
 @login_required

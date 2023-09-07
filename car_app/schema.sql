@@ -1,3 +1,6 @@
+DROP TABLE IF EXISTS car;
+DROP TABLE IF EXISTS customer;
+DROP TABLE IF EXISTS booking;
 
 
 CREATE TABLE car (
@@ -8,7 +11,7 @@ CREATE TABLE car (
   seat INTEGER NOT NULL,
   door INTEGER NOT NULL,
   gearbox TEXT NOT NULL,
-  image TEXT NOT NULL
+  image TEXT
 );
 
 CREATE TABLE customer (

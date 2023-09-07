@@ -48,7 +48,7 @@ def register():
 
         flash(error)
 
-    return render_template('customer_register.html')
+    return render_template('customer/register.html')
 
 # Customer login control
 @bp.route('/login', methods=('GET', 'POST'))
@@ -76,7 +76,7 @@ def login():
 
         flash(error)
 
-    return render_template('customer_login.html')
+    return render_template('customer/login.html')
 
 # Getting customer id that was previously stored during login
 @bp.before_app_request
@@ -130,7 +130,7 @@ def index():
         ' WHERE role = 0'
         ' ORDER BY name ASC'
     ).fetchall()
-    return render_template('admin/customer_index.html', customers=customers)
+    return render_template('customer/index.html', customers=customers)
 
 # customer can be created by the logged in addmin
 @bp.route('/create', methods=('GET', 'POST'))
@@ -171,7 +171,7 @@ def create():
 
         flash(error)
 
-    return render_template('customer_create.html')
+    return render_template('customer/create.html')
 
 ## Admin can update customer table ##
 # Get the customer to be updated
@@ -226,7 +226,7 @@ def update(id):
             db.commit()
             return redirect(url_for('customer.index'))
 
-    return render_template('customer_update.html', customer=customer)
+    return render_template('customer/update.html', customer=customer)
 
 @bp.route('/edit_profile', methods=('GET', 'POST'))
 @login_required
@@ -260,7 +260,7 @@ def edit_profile():
 
         flash(error)
 
-    return render_template('admin/admin_update.html')
+    return render_template('admin/update.html')
 
 
 
@@ -286,13 +286,7 @@ def admin_dashboard():
     booking_count = db.execute('SELECT COUNT(*) FROM booking').fetchone()[0]
 
     # Render the dashboard template and pass counts as context
-    return render_template('admin/admin_dashboard.html',
+    return render_template('admin/dashboard.html',
                            car_count=car_count,
                            customer_count=customer_count,
                            booking_count=booking_count)
-
-
-
-
-
-
